@@ -1,0 +1,303 @@
+In this article, we will look into how to write functions in C programming language, what it is the usage of the function and how to use them whenver it is required. <strong>It is always good programming practice that, to divide big logic in small pieces </strong>. <strong>Each piece are what we called as function.</strong> First, we will see how to define the function then we will look how to use the function and what is the function sequence. So, let's start with how to define function. 
+
+In C Programming language, <strong>main() itself is a function which will</strong> generally called as user defined function. <strong>So, program execution will always start with main.</strong> So, enter c program can be a block in a multiple function if it is required. Already there are a lot of pre-defined functions which are part of C library like, printf(), scanf(),memcpy(), stycopy() and so on ... <strong>If you want to define your own function then, we will called as user defined function.</strong>
+
+<strong>So, define to function syntax is something which similar to main function. First, we need to tell the type of the function. Type is what type of value you will use followed by function name and followed by open and closed parenthesis. If you want function taking any argument, you will define argument list. Argument list separated by comma operator. Then open and closed parenthesis. Within the parenthesis, we need to define body of the function. So, this the generic syntax of the function, this is how it looks like. A</strong>
+
+ 
+<pre class="lang:default decode:true " title="function_syntanx" >type func_name(arg list)
+{
+     body;
+}</pre> 
+
+
+<strong>Also If the function doesn't take any argument, we need to define "arg list" as "void". The body of the function should execute whenever this function is invoked.</strong> Now, we will take a small example, like we will try to define the function which will simply print the printf statement.
+
+
+ 
+<pre class="lang:c decode:true " title="first.c" >#include &lt;stdio.h&gt;
+
+int main()
+{
+	display();
+}
+
+int display(void)
+{
+	printf("\n My first function\n");
+}</pre> 
+
+
+So, Here I defined a function and body of the function just have printf statement. If you want to use this function, we need to invoke that function. So, we need to require a statement which will invoke the function. So, the statement which invkoes the function  called as <strong>function call statement</strong>. So, how to call function statement is this, function name followed by open and closed paranthesis  and also if the function takes argument, put arguments within paranthesis "e.g display()". 
+
+So, here program execution starts from main. So, main internally invokes the display function. So, the controller will jump to this body and it will execute the statement. After that, the controller will continue next immediate statement but in this program there is no another statement for that reson the program will be terminated. If We compile and run it,
+
+ 
+<pre class="lang:c decode:true " title="the_output_of_first.c" >./a.out 
+
+ My first function
+</pre> 
+
+
+<strong>So, printf() statement called within display function. So, diplay() function invoked by main. </strong>So, whenever you want to invoke the function, you should have one function definition. Without function definition, if you try to invoke the definition, then run time doesn't what statements should execute when this function is called. "function call" is something which will invoke the function.  
+
+ 
+<pre class="lang:default decode:true " title="function_call" >#include &lt;stdio.h&gt;
+
+int main()
+{
+	display(); /* Function call */
+}
+
+int display(void)
+{
+	printf("\n My first function\n");
+}</pre> 
+
+
+Whenver you want to pass any argument to the function, then what we need to do is, in this case display function is taking any argument. In main function, I have two variables which type of integer. Now, my requirement is I need to invoke add function function. For this function, I will pass the value which I need to add. 
+
+ 
+<pre class="lang:default decode:true " title="first_2.c" >#include &lt;stdio.h&gt;
+
+int main()
+{
+	int a=10,b=20,c;	
+	c = add(a,b);
+	printf("\n %d \n",c);
+}
+
+int add(int x,int y)
+{
+	int result = x + y;
+	return result;
+}</pre> 
+
+
+<strong>Return statement what it does is, return to value from call function to it's calling function. </strong>So, when the value is written, that value should be save in the call function. If we compile and run this program,
+
+ 
+<pre class="lang:default decode:true " title="the_output_of_first_2.c" >./a.out 
+
+ 30 
+</pre> 
+
+
+<strong>In this program, x and y called as argument and also a and b called as arguement. At the time of invkoking the function, if you past any arguments they called as actual arguments. </strong>Actual values which I am passing from calling function to call function.<strong> So, x and y called as formal arguement, so always actual arguments value will be call in the formal argument.</strong><strong>Because of this, the total number of actual  arguments should matach the total number of formal arguments.</strong> In this case, as both are integers and giving index with comma sign.
+
+
+Let's see that. I have a function, In this case if you see add function is written an integer. What if I want to read them, a value other than integer. Let's take a small code.It will modify code in such a way that we make a,b and as well as c is float. <strong>So, when you add float value to another float value then, you know that the result will be float. </strong>There is no question mark here. So, when I talk about operators, I clearly told you that the re<strong>sult value is something which purely depends the type of the operand. </strong>So, if any one of the operand is float, then the result will be float. 
+
+
+ 
+<pre class="lang:c decode:true " title="first_3.c" >#include &lt;stdio.h&gt;
+
+int main()
+{
+	float a=10.5,b=20.1,c;
+	c = add(a,b);		/* Function call */
+	printf("\n %f \n",c);
+}
+
+float add(float x, float y)
+{
+	float result = x+y;
+	return result;		
+}</pre> 
+
+
+In this program, add is a funciton which is taking two float values and it is adding them then, the result is something which is written. So, if you are writing the result value, the result will be what? It should be float value. What we will do is, we will try to compile this. We will check it out whether it complies or not. So, whenver you are compiling this program, you are getting an error that conflict types for add. The error is, previous implicit declaration of "add" was here. So, what happening here is this. <strong>So, whenever you are passing a float value, I if you define a function according to ansii c standarts. Compliler will always assume that the arguments, each one every function by default will written integer value.</strong> If you are not defining an interger value make sure that you declera that to the compiler otherwise the compiler always think that functions are written as integer but when you come accross the definition , it has encountred the written value of add is float. So, it has been confilict with float. That the reason why you are getting error. 
+
+ 
+<pre class="lang:default decode:true " title="the_output_of_first_3.c_compilation" >gcc first_3.c
+first_3.c:10:7: error: conflicting types for ‘add’
+ float add(float x, float y)
+       ^
+first_3.c:6:6: note: previous implicit declaration of ‘add’ was here
+  c = add(a,b);  /* Function call */
+      ^
+</pre> 
+
+
+<strong>We need to make sure that if the compiler, if the compiler is writing other than integer, some how i need to intermate that the compiler. If the written value is integer, then even if you don't intermate the compiler by default the compiler will think that every function is written integer value. </strong>So, here, what's happening is, add is going to attemption, when it encountred the actual definition , it is unable to process and immediately give an error.<strong> So, how to tell compiler that add is a function which won't write integer but it is a function which written some other value than integer then, we need to define the signature of the function.So, we will called as function prototype, the function prototype or function signature both are the same.</strong> So, what we need to do is, we need to tell exactly what kind of arugments it is taking , <strong>how many arguments it is taking, and what is the written value</strong>. 
+
+ 
+<pre class="lang:default decode:true " title="first_4.c" >#include &lt;stdio.h&gt;
+
+float add(float,float);
+
+int main()
+{
+	float a=10.5,b=20.1,c;
+	c = add(a,b);		/* Function call */
+	printf("\n %f \n",c);
+}
+
+float add(float x, float y)
+{
+	float result = x+y;
+	return result;		
+}</pre> 
+
+
+First, we need to write return type followed by function name followed by just specify the type of the argumets, dont give any variable. So, it is not a function definition , it is a statementthen, this statement we called as function decleration statement. <strong>So, the stement can appear within another function or it can be global to all function. You can define anywhere you want. What will do is, we will try to define it within main.</strong>
+
+ 
+<pre class="lang:default decode:true " title="first_5.c" >#include &lt;stdio.h&gt;
+
+
+int main()
+{
+	float a=10.5,b=20.1,c,float add(float,float);;
+	c = add(a,b);		/* Function call */
+	printf("\n %f \n",c);
+}
+
+float add(float x, float y)
+{
+	float result = x+y;
+	return result;		
+}</pre> 
+
+
+So, it is possible to declare functions like this, a is float,b is float, c is float and add is a function which will taje two float arguments and written float value. Now, if you compile this, let's check it out whether it will give error or not. 
+
+ 
+<pre class="lang:default decode:true " title="the_compilation_step_of_first_5.c" >gcc first_5.c
+</pre> 
+
+
+It will give any error, the reason is,<strong> before the compiler encounter this statement will clearly tell eaxtly what add function is taking and what is written</strong>. If I run this,
+
+ 
+<pre class="lang:default decode:true " title="the_output_of_first_5.c" >./a.out 
+
+ 30.600000 
+</pre> 
+
+
+Now, we get the exact result what we expect. So, if there is a function which will be written other than intger, always make sure that you write the signature for the function and function signature generally write like this, what it disadvantege if you don't define function prototype. Let's see that. Again, we modify the function tha add function in such a way that it written an integer. Let's see that it takes two integers as arguments then, this is the case I told you that function signatures are optional. Function signatures defining is optional, if there is any function whcih written other than integer. In this case, when you invoke add function you know that you get the expected result without any error. 
+
+ 
+<pre class="lang:c decode:true " title="first_6.c" >#include &lt;stdio.h&gt;
+
+int main()
+{
+	float a=10.5,b=20.1,c;
+	c = add(a,b);
+	printf("\n %f \n",c);
+}
+
+int add(int x,int y)
+{
+	float result = x+y;
+	return result;
+}</pre> 
+
+
+Is there any side effect if you don't decleare the function signature. Let's check it out. Here, in this case I have defined two integer with 10 and 20 values. 
+
+ 
+<pre class="lang:default decode:true " title="first_7.c" >#include &lt;stdio.h&gt;
+
+int main()
+{
+	int a=10,b=20,c;
+	c = add(a,b);	/* Function call */
+	printf("\n %d \n",c);
+}
+
+int add(int x,int y)
+{
+	int result = x+y;	
+	return result;
+}</pre> 
+
+
+If we compile and run it,
+
+ 
+<pre class="lang:default decode:true " title="the_output_of_first_7.c" > ./a.out 
+
+ 30 
+</pre> 
+
+
+Now, you are getting the expected result. Is there any problem? What if I pass more than two arguments? Should it raise any error or not? It should raise an error. The reason is, add function is expecting two arguments, then at the time of invoking that function you are passing four arguments. Now, a will be copied in the x and b value will b copied in the y but  what's happening 10 and 20. So, it is syntaxtally is not correct. So, it should raise an error. 
+
+ 
+<pre class="lang:default decode:true " title="first_8.c" >#include &lt;stdio.h&gt;
+
+int main()
+{
+	int a=10,b=20,c;
+	c = add(a,b,20,10);
+	printf("\n %d \n",c);	
+}
+
+int add(int x,int y)
+{
+	int result = x+y;
+	return result;
+}</pre> 
+
+
+If we run compile and run this program,
+
+<pre class="lang:default decode:true " title="the_output_of_first_7.c" > ./a.out 
+
+ 30 
+</pre> 
+
+We don't get any error. Maybe the function which you defined is correct but way the use invkoing is not correct. So, how to validate that how to tell the compiler validate each one every function call? What if I invoke this function with only one argument?Again it is a problem. The reason is, add is expecting two arguments but we are passing only one argument. 
+
+
+
+Again, it compiles. This validations are not done by compiler. The reason is, you are making call to function. 
+
+çıktıyı 
+
+<strong>After function call, compiler can not back and intermate the error. So, how the validate this is again, we need to go with function decleration. Function decleratio, function prototype and function reflect the same thing. We give the information about the function to the compiler. So that, it can take and validate the whether the functions invoke with the correct member of arguments or not then, the second what if it has written other than integer then the compiler will know about that it will be written as proper or it will rasie errors?</strong>If we compile and run this program.
+
+programı ekle 19:11 
+
+Still, I am invoking the function with only one argument but previously I didn't declared that function. I didn't write function signature but i have deffining function decleration now. let's compile this.
+
+
+çıktı ekle 19:38
+
+It is clearly telling that "too few arguments to function 'add'".Let's try to pass more than one argument.
+
+
+kodu ekle 19:56
+
+If we compile and run it, 
+
+çıktıyı eklle 20:00 
+
+<strong>It is telling that too many arguments. From this, it is very clear that until unless write function signature statements, the compiler can never validate whether yout functions invoke correctly or not? </strong> So, it is really required all the times? All depends on where your function definition appear. If the function call appears before the function definition then, the compiler has to validate each one every function call. 
+
+kodu ekle 21:06
+
+Here, I did a small change. Simply what I am trying to do is, just I have changed the definition position in my source code. So, here, what I am trying to do is, I am invoking function call appears after function definition. Is there any function signature here? No, I didn't define any signature. Now, let's see that the compiler whether will raise an error or not.
+
+
+çıktıyı ekle 21:30
+
+So, it is raising an error, what happening is, make sure that if the compiler encountering the function call before it sees the function definition, then make sure that you are the signature for those function. That is not the key. Function definition appears first, then followed by function call and there is no need of function signature. They are optional. S<strong>o, function signature, function prototypes or function decleration are optional.</strong> So, function signetures, function prototypes or function <strong>decleration  are used to validat</strong<strong>>e each one function call. Just to check </strong>whether the function invoke with the correct number of arguments or not. This is how you will define function, this how invoke function and this is how you will decleare the function.  
+
+
+kodu ekle 23:40
+
+
+So, what we will do is,
+
+
+-------
+raise = çıkarmak, raise an error gibi 
+encounter = rastlamak 
+bir int ve float fonksiyonu karşılaştır compiler uyarı yada hata veriyor mu
+assume= farzetmek 
+implicit = dolaylı
+generic = genel
+set out = başlamak, yola çıkmak 
