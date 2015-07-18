@@ -1,0 +1,8 @@
+#include <stdio.h>
+
+void sum(void)
+{
+	int result;
+	result = add(200,300);
+	printf("\n Sum: %d \n",result);
+}
