@@ -1,0 +1,1 @@
+cmd_/home/eren/embeddedturkey/Linux_Kernel_Module_Tutorials/Lesson_001_Kernel_Programming/built-in.o :=  rm -f /home/eren/embeddedturkey/Linux_Kernel_Module_Tutorials/Lesson_001_Kernel_Programming/built-in.o; ar rcsD /home/eren/embeddedturkey/Linux_Kernel_Module_Tutorials/Lesson_001_Kernel_Programming/built-in.o

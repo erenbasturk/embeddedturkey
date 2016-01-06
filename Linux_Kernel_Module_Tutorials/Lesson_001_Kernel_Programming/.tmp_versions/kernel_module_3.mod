@@ -1,0 +1,2 @@
+/home/eren/embeddedturkey/Linux_Kernel_Module_Tutorials/Lesson_001_Kernel_Programming/kernel_module_3.ko
+/home/eren/embeddedturkey/Linux_Kernel_Module_Tutorials/Lesson_001_Kernel_Programming/kernel_module_3.o
